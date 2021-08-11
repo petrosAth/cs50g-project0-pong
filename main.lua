@@ -242,13 +242,11 @@ function love.update(dt)
     end
 
     -- player 2
-    if love.keyboard.isDown('up') then
-        player2.dy = -PADDLE_SPEED
-    elseif love.keyboard.isDown('down') then
-        player2.dy = PADDLE_SPEED
-    else
-        player2.dy = 0
-    end
+    -- player 2 is the machine. the position of its paddle is equal with the position
+    -- of the ball on y axis. the -8 is so the ball is centered on the paddle since they
+    -- have different height and the engine places them according to the top left corner
+    -- of the rectangular
+    player2.y = ball.y - 8
 
     -- update our ball based on its DX and DY only if we're in play state;
     -- scale the velocity by dt so movement is framerate-independent
